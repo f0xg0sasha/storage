@@ -14,6 +14,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	fmt.Println("uploaded", file)
+
+	fileByID, err := st.GetByID(file.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("uploaded", fileByID)
 }
