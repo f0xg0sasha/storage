@@ -8,12 +8,12 @@ import (
 )
 
 type Storage struct {
-	Files map[uuid.UUID]*file.File
+	files map[uuid.UUID]*file.File
 }
 
 func NewStorage() *Storage {
 	return &Storage{
-		Files: make(map[uuid.UUID]*file.File),
+		files: make(map[uuid.UUID]*file.File),
 	}
 }
 
@@ -23,14 +23,14 @@ func (s *Storage) Update(filename string, content []byte) (*file.File, error) {
 		return nil, err
 	}
 
-	s.Files[newFile.ID] = newFile
+	s.files[newFile.ID] = newFile
 
 	return newFile, nil
 
 }
 
 func (s *Storage) GetByID(fileID uuid.UUID) (*file.File, error) {
-	foundFile, ok := s.Files[fileID]
+	foundFile, ok := s.files[fileID]
 	if !ok {
 		return nil, fmt.Errorf("file %v not found", fileID)
 	}

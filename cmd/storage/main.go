@@ -20,5 +20,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("uploaded", fileByID)
+	fmt.Println("get by id", fileByID)
 }
